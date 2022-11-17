@@ -107,7 +107,7 @@ def api_attractions():
         cursor.close()
         cnx.close()
 
-@app.route("/api/attractions/<attractionId>")
+@app.route("/api/attraction/<attractionId>")
 def api_attraction_id(attractionId):
     try:
         cnx = cnx_pool.get_connection()
