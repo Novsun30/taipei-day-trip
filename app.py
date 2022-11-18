@@ -35,8 +35,11 @@ class Date_object:
         cursor = cnx.cursor()
         select_images = "SELECT url FROM image WHERE attraction_id = %s" 
         cursor.execute(select_images,(self.id,))
-        image = cursor.fetchall()
-        self.images = image
+        images = cursor.fetchall()
+        image_data = []
+        for image in images:
+            image_data.append(image[0])
+        self.images = image_data
         cursor.close()
         cnx.close()
 # Pages
@@ -141,7 +144,10 @@ def api_categories():
         select_category = "SELECT category FROM attraction"
         cursor.execute(select_category)
         data = cursor.fetchall()
-        result["data"] = data
+        categories = []
+        for category in data:
+            categories.append(category[0])
+        result["data"] = categories
         return jsonify(result)
     except:
         return jsonify({"error": True,"message": "伺服器發生錯誤"}), 500
