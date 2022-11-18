@@ -141,7 +141,7 @@ def api_categories():
         cnx = cnx_pool.get_connection()
         cursor = cnx.cursor()
         result = {"data":[]}
-        select_category = "SELECT category FROM attraction"
+        select_category = "SELECT DISTINCT category FROM attraction "
         cursor.execute(select_category)
         data = cursor.fetchall()
         categories = []
