@@ -102,7 +102,7 @@ function showCategoryMenu(){
 }
 
 async function getCategories(){
-    let response = await fetch("http://172.31.13.86:3000/api/categories");
+    let response = await fetch("http://52.69.110.95/:3000/api/categories");
     let data = await response.json();
     data = data["data"];
     for(let i=0;i < data.length; i++){
@@ -124,7 +124,7 @@ async function getCategories(){
 let page = 0;
 let keyword = "";
 let loadStatus = false;
-let url = "http://172.31.13.86:3000/api/attractions?page=";
+let url = "http://52.69.110.95/:3000/api/attractions?page=";
 showData();
 getCategories();
 let footer = document.getElementById("scroll-bottom-detector");
