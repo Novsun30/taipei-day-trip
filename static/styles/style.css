@@ -1,0 +1,289 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC";
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 24px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
+}
+
+h3.bold {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.button-bold {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
+}
+
+.button {
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 16px;
+}
+
+.content-bold {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: auto;
+}
+
+.content {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: auto;
+}
+
+.body-bold {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13.3px;
+}
+
+.body-med {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+}
+
+.category-list {
+  font-weight: 500;
+  font-size: 14;
+  line-height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body nav {
+  display: flex;
+  justify-content: center;
+  background-color: #FFFFFF;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  height: 54px;
+  width: 100%;
+  box-shadow: 1px 0px 5px 1px #757575;
+}
+body nav div.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px;
+}
+body nav div.nav-container h2 {
+  color: #448899;
+  margin-left: 15px;
+}
+body nav div.nav-container h2 a {
+  color: #448899;
+}
+body nav div.nav-container ul {
+  list-style: none;
+  display: flex;
+  color: #666666;
+}
+body nav div.nav-container ul li {
+  margin-right: 20px;
+}
+body section.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 320px;
+}
+body section.hero div.search-bar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 65%;
+  width: 1200px;
+  margin-left: 15px;
+}
+body section.hero div.search-bar-container h1 {
+  color: #F8F8F8;
+}
+body section.hero div.search-bar-container p {
+  color: #F8F8F8;
+}
+body section.hero div.search-bar-container div.search-bar {
+  display: flex;
+}
+body section.hero div.search-bar-container div.search-bar input {
+  width: 400px;
+  height: 46px;
+  border: none;
+  border-radius: 8px 0 0 8px;
+  padding: 15px;
+  box-shadow: 0px 0px 20px #AABBCC;
+}
+body section.hero div.search-bar-container div.search-bar button {
+  width: 60px;
+  height: 46px;
+  background-color: #448899;
+  border: none;
+  border-radius: 0 8px 8px 0;
+}
+body section.hero div.search-bar-container div.search-bar button img {
+  position: static;
+  width: 30px;
+  height: 30px;
+}
+body section.hero div.search-bar-container div.search-bar div.category-menu {
+  position: absolute;
+  z-index: 1;
+  bottom: -39px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px #AABBCC;
+}
+body section.hero div.search-bar-container div.search-bar div.category-menu p.category {
+  display: flex;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+  padding: 10px 15px 10px 15px;
+  border-radius: 5px;
+  color: #000000;
+}
+body section.hero div.search-bar-container div.search-bar div.category-menu p.category:hover {
+  cursor: pointer;
+  background-color: #E8E8E8;
+}
+body section.hero img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: -1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+body main section.main-content-container {
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 40px 0 40px 0;
+}
+body main section.main-content-container div.attraction-container {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  margin: 15px;
+  border: #E8E8E8 solid 1px;
+  border-radius: 5px;
+}
+body main section.main-content-container div.attraction-container div.attraction-title {
+  position: relative;
+  height: 197px;
+}
+body main section.main-content-container div.attraction-container div.attraction-title img {
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  height: 100%;
+}
+body main section.main-content-container div.attraction-container div.attraction-title div.attraction-name-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  display: flex;
+  position: absolute;
+  height: 45px;
+  bottom: 0;
+}
+body main section.main-content-container div.attraction-container div.attraction-title div.attraction-name-container p.attraction-name {
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  line-height: 1.1;
+}
+body main section.main-content-container div.attraction-container div.attraction-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+}
+body main section.main-content-container div.attraction-container div.attraction-detail p {
+  color: #757575;
+  padding: 10px;
+}
+body footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 104px;
+  width: 100%;
+  background: #757575;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 1200px) {
+  body main section.main-content-container {
+    width: 600px;
+  }
+}
+@media screen and (max-width: 600px) {
+  body nav div.nav-container h2 {
+    margin: 10px;
+  }
+  body nav div.nav-container ul li {
+    margin-right: 10px;
+  }
+  body section.hero div.search-bar-container div.search-bar input {
+    width: 230px;
+  }
+  body section.hero div.search-bar-container div.search-bar div.category-menu {
+    width: 322px;
+  }
+  body section.hero div.search-bar-container div.search-bar div.category-menu p.category {
+    width: 96px;
+  }
+  body main section.main-content-container {
+    width: 360px;
+    justify-content: center;
+  }
+  body main section.main-content-container div.attraction-container {
+    width: 322px;
+  }
+  body main section.main-content-container div.attraction-container div.attraction-title {
+    height: 235px;
+  }
+}/*# sourceMappingURL=style.css.map */
