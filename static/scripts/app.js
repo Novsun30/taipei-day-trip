@@ -39,10 +39,8 @@ function addData(data, dataStart, dataEnd){
 }
 
 async function getData(url, page, keyword){
-    console.log(url+page+keyword)
     let res = await fetch(url+page+keyword);
     let data = await res.json();
-    console.log("called")
     if (data["data"] == null){
         let sectionContainer = document.querySelector("section.main-content-container");
         let result = document.createElement("h3");
@@ -77,7 +75,6 @@ async function throttle(){
         loadStatus = true;
         await showData();
         loadStatus = false;
-        console.log("load");
 }}
 
 function searchAttraction(){
@@ -92,7 +89,6 @@ function searchAttraction(){
     }
     showData();
     window.addEventListener("scroll", throttle, {passive: true});
-    console.log(inputValue, page);
 }
 
 function showCategoryMenu(){
@@ -106,7 +102,7 @@ function showCategoryMenu(){
 }
 
 async function getCategories(){
-    let response = await fetch("http://127.0.0.1:3000/api/categories");
+    let response = await fetch("http://172.31.13.86:3000/api/categories");
     let data = await response.json();
     data = data["data"];
     for(let i=0;i < data.length; i++){
@@ -123,13 +119,12 @@ async function getCategories(){
     }
     let categoryMenu = document.querySelector("div.category-menu");
     categoryMenu.style.display = "none";
-    console.log(categoryMenu.className)
 }
 
 let page = 0;
 let keyword = "";
 let loadStatus = false;
-let url = "http://127.0.0.1:3000/api/attractions?page=";
+let url = "http://172.31.13.86:3000/api/attractions?page=";
 showData();
 getCategories();
 let footer = document.getElementById("scroll-bottom-detector");
