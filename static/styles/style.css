@@ -214,6 +214,8 @@ body main section.main-content-container div.attraction-container div.attraction
   height: 197px;
 }
 body main section.main-content-container div.attraction-container div.attraction-title img {
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 5px 5px 0 0;
   width: 100%;
   height: 100%;
@@ -257,7 +259,10 @@ body footer {
 
 @media screen and (max-width: 1200px) {
   body main section.main-content-container {
-    width: 600px;
+    width: 100%;
+  }
+  body main section.main-content-container div.attraction-container {
+    width: 40%;
   }
 }
 @media screen and (max-width: 600px) {

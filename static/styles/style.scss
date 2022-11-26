@@ -221,6 +221,7 @@ body{
           position: relative;
           height: 197px;
           img{
+            object-fit: cover;
             border-radius: 5px 5px 0 0;
             width: 100%;
             height: 100%;
@@ -272,7 +273,10 @@ body{
   body{
     main{
       section.main-content-container{
-        width: 600px;
+        width: 100%;
+        div.attraction-container{
+          width: 40%;
+        }
       }
     }
   }
