@@ -6,7 +6,6 @@ function addData(data, dataStart, dataEnd){
         const sectionContainer = document.querySelector("section.main-content-container");
         const newAnchorTag = document.createElement("a");
         newAnchorTag.href = attractionUrl;
-        newAnchorTag.target = "_blank";
         sectionContainer.appendChild(newAnchorTag); 
         
         const newAttractionContainer = document.createElement("div");
