@@ -1,39 +1,49 @@
 function addData(data, dataStart, dataEnd){
     let dataIndex = 0;
     for(let i = dataStart; i < dataEnd; i++){
-        let sectionContainer = document.querySelector("section.main-content-container");
-        let newAttractionContainer = document.createElement("div");
+        const id = data[dataIndex]["id"];
+        const attractionUrl = `http://52.69.110.95:3000/attraction/${id}`;
+        const sectionContainer = document.querySelector("section.main-content-container");
+        const newAnchorTag = document.createElement("a");
+        newAnchorTag.href = attractionUrl;
+        newAnchorTag.target = "_blank";
+        sectionContainer.appendChild(newAnchorTag); 
+        
+        const newAttractionContainer = document.createElement("div");
+        const newFilterDiv = document.createElement("div");
         newAttractionContainer.classList.add("attraction-container");
-        sectionContainer.appendChild(newAttractionContainer);
-        let newAttractionTitle = document.createElement("div");
-        let newAttractionDetail = document.createElement("div");
+        newFilterDiv.classList.add("filter");
+        newAnchorTag.appendChild(newAttractionContainer);
+        newAttractionContainer.appendChild(newFilterDiv);
+
+        const newAttractionTitle = document.createElement("div");
+        const newAttractionDetail = document.createElement("div");
         newAttractionTitle.classList.add("attraction-title");
         newAttractionDetail.classList.add("attraction-detail");
-        let attractionContainer = document.querySelectorAll("div.attraction-container");
-        attractionContainer[i].appendChild(newAttractionTitle);
-        attractionContainer[i].appendChild(newAttractionDetail);
-        let newAttractionNameContainer = document.createElement("div");
-        let newAttractionImage = document.createElement("img");
-        let attractionTitle = document.querySelectorAll("div.attraction-title");
+        newAttractionContainer.appendChild(newAttractionTitle);
+        newAttractionContainer.appendChild(newAttractionDetail);
+        
+        const newAttractionNameContainer = document.createElement("div");
+        const newAttractionImage = document.createElement("img");
         newAttractionNameContainer.classList.add("attraction-name-container");
         newAttractionImage.classList.add("attraction-image");
         newAttractionImage.src = data[dataIndex]["images"][0];
-        attractionTitle[i].appendChild(newAttractionImage);
-        attractionTitle[i].appendChild(newAttractionNameContainer);
-        let newAttractionName = document.createElement("p");
-        let attractionNameConainer = document.querySelectorAll("div.attraction-name-container")
+        newAttractionTitle.appendChild(newAttractionImage);
+        newAttractionTitle.appendChild(newAttractionNameContainer);
+
+        const newAttractionName = document.createElement("p");
         newAttractionName.classList.add("attraction-name", "body-bold");
         newAttractionName.innerText = data[dataIndex]["name"];
-        attractionNameConainer[i].appendChild(newAttractionName);
-        let newAttractionMrt = document.createElement("p");
-        let newAttractionCategory = document.createElement("p");
-        let attractionDetail = document.querySelectorAll("div.attraction-detail");
+        newAttractionNameContainer.appendChild(newAttractionName);
+
+        const newAttractionMrt = document.createElement("p");
+        const newAttractionCategory = document.createElement("p");
         newAttractionMrt.classList.add("attraction-mrt", "body-med");
         newAttractionMrt.innerText = data[dataIndex]["mrt"];
         newAttractionCategory.classList.add("attraction-category", "body-med");
         newAttractionCategory.innerText = data[dataIndex]["category"];
-        attractionDetail[i].appendChild(newAttractionMrt);
-        attractionDetail[i].appendChild(newAttractionCategory);
+        newAttractionDetail.appendChild(newAttractionMrt);
+        newAttractionDetail.appendChild(newAttractionCategory);
         dataIndex ++;
     }
 }
@@ -58,7 +68,7 @@ async function getData(url, page, keyword){
 }
 
 async function showData(){
-    page = await getData(url, page, keyword)
+    page = await getData(url, page, keyword);
 }
 
 async function throttle(){
@@ -96,18 +106,18 @@ function showCategoryMenu(){
     categoryMenu.style.display = "flex";
     document.addEventListener("click",(e)=>{
         if(e.target.className != "category-menu" && e.target.className != "body-bold search-input"){
-            categoryMenu.style.display = "none"
+            categoryMenu.style.display = "none";
         }
     })
 }
 
 async function getCategories(){
-    let response = await fetch("http://52.69.110.95:3000/api/categories");
+    let response = await fetch("http://52.69.110.95:3000/api/categories"); 
     let data = await response.json();
     data = data["data"];
     for(let i=0;i < data.length; i++){
-        let categoryMenu = document.querySelector("div.category-menu");
-        let category = document.createElement("p");
+        const categoryMenu = document.querySelector("div.category-menu");
+        const category = document.createElement("p");
         category.classList.add("category", "category-list");
         category.textContent = data[i];
         categoryMenu.appendChild(category);
@@ -124,12 +134,12 @@ async function getCategories(){
 let page = 0;
 let keyword = "";
 let loadStatus = false;
-let url = "http://52.69.110.95:3000/api/attractions?page=";
+let url = "http://52.69.110.95:3000/api/attractions?page="; 
 showData();
 getCategories();
-let footer = document.getElementById("scroll-bottom-detector");
+const footer = document.getElementById("scroll-bottom-detector");
 window.addEventListener("scroll", throttle, {passive: true});
-let searchButton = document.querySelector("button.search-submit");
+const searchButton = document.querySelector("button.search-submit");
 searchButton.addEventListener("click", searchAttraction);
-let searchInput = document.querySelector("input.search-input");
+const searchInput = document.querySelector("input.search-input");
 searchInput.addEventListener("focus", showCategoryMenu);
