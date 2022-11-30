@@ -1,0 +1,489 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans TC";
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 24px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
+}
+
+h3.bold {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.button-bold {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 16px;
+}
+
+.button {
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 16px;
+}
+
+.content-bold {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: auto;
+}
+
+.content {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: auto;
+}
+
+.body-bold {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 13.3px;
+}
+
+.body-med {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+}
+
+.category-list {
+  font-weight: 500;
+  font-size: 14;
+  line-height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body nav {
+  display: flex;
+  justify-content: center;
+  background-color: #FFFFFF;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  height: 54px;
+  width: 100%;
+  box-shadow: 1px 0px 5px 1px #757575;
+}
+body nav div.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1200px;
+}
+body nav div.nav-container h2 {
+  color: #448899;
+  margin-left: 15px;
+}
+body nav div.nav-container h2 a {
+  color: #448899;
+}
+body nav div.nav-container ul {
+  list-style: none;
+  display: flex;
+  color: #666666;
+}
+body nav div.nav-container ul li {
+  margin-right: 20px;
+}
+body main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
+}
+body main section.main-top {
+  display: flex;
+  margin-top: 40px;
+}
+body main section.main-top div.images {
+  display: flex;
+  width: 540px;
+  height: 400px;
+  margin-right: 30px;
+  position: relative;
+}
+body main section.main-top div.images div.dot-container {
+  display: flex;
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%, 0);
+  position: absolute;
+}
+body main section.main-top div.images div.dot-container div.dot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 6px 12px 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  opacity: 0.6;
+  cursor: pointer;
+}
+body main section.main-top div.images div.dot-container div.dot div.dot-indicator {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000000;
+}
+body main section.main-top div.images div.dot-container div.dot:hover {
+  background-color: #777;
+  -webkit-animation: 0.5s hover-filter;
+          animation: 0.5s hover-filter;
+}
+body main section.main-top div.images button.left-arrow {
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 10px;
+  opacity: 0.8;
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+body main section.main-top div.images button.left-arrow div.filter {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+}
+body main section.main-top div.images button.left-arrow img {
+  position: relative;
+}
+body main section.main-top div.images button.left-arrow div.filter:hover {
+  background-color: #333;
+  opacity: 0.6;
+  -webkit-animation: 0.3s hover-filter;
+          animation: 0.3s hover-filter;
+}
+body main section.main-top div.images button.right-arrow {
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 10px;
+  opacity: 0.8;
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+body main section.main-top div.images button.right-arrow img {
+  position: relative;
+}
+body main section.main-top div.images button.right-arrow div.filter {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+}
+body main section.main-top div.images button.right-arrow div.filter:hover {
+  background-color: #333;
+  opacity: 0.6;
+  -webkit-animation: 0.3s hover-filter;
+          animation: 0.3s hover-filter;
+}
+body main section.main-top div.images img {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  -webkit-animation: 1.25s fade-in;
+          animation: 1.25s fade-in;
+}
+body main section.main-top div.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 600px;
+  height: 400px;
+}
+body main section.main-top div.info div.name h3 {
+  display: flex;
+  align-items: center;
+  color: #666666;
+  height: 33px;
+}
+body main section.main-top div.info div.category-mrt p {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  height: 22px;
+  color: #666666;
+}
+body main section.main-top div.info div.booking {
+  margin-top: 20px;
+  padding: 0px 20px 20px 20px;
+  height: 320px;
+  background-color: #E8E8E8;
+  border-radius: 5px;
+}
+body main section.main-top div.info div.booking p {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  color: #666666;
+  height: 22px;
+}
+body main section.main-top div.info div.booking p.body-med {
+  height: 24px;
+}
+body main section.main-top div.info div.booking div.date-select {
+  margin-top: 15px;
+}
+body main section.main-top div.info div.booking div.date-select label {
+  color: #666666;
+}
+body main section.main-top div.info div.booking div.date-select input {
+  width: 193px;
+  height: 35px;
+  padding: 5px 10px 5px 10px;
+  border: none;
+}
+body main section.main-top div.info div.booking div.time-select {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+body main section.main-top div.info div.booking div.time-select label {
+  color: #666666;
+  margin-right: 12px;
+}
+body main section.main-top div.info div.booking div.time-select div.check-container {
+  display: flex;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  position: relative;
+}
+body main section.main-top div.info div.booking div.time-select div.check-container input {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+}
+body main section.main-top div.info div.booking div.time-select div.check-container input:checked ~ span.check-radio::after {
+  background-color: #448899;
+  width: 18px;
+  height: 18px;
+}
+body main section.main-top div.info div.booking div.time-select div.check-container span.check-radio {
+  background-color: #FFFFFF;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+body main section.main-top div.info div.booking div.time-select div.check-container span.check-radio::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 2px;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+body main section.main-top div.info div.booking div.time-select p {
+  margin: 0 18px 0 5px;
+}
+body main section.main-top div.info div.booking div.price {
+  display: flex;
+}
+body main section.main-top div.info div.booking div.price p {
+  margin-right: 5px;
+}
+body main section.main-top div.info div.booking button.button {
+  border-radius: 5px;
+  border: none;
+  background-color: #448899;
+  color: #FFFFFF;
+  width: 154px;
+  height: 36px;
+  margin-top: 25px;
+}
+body main hr {
+  width: 1200px;
+  margin: 40px 0 50px 0;
+  border-top: 1px solid #E8E8E8;
+  border-bottom: none;
+}
+body main section.main-bottom div.description p.content {
+  color: #666666;
+}
+body main section.main-bottom div.address {
+  margin-top: 20px;
+}
+body main section.main-bottom div.address p {
+  display: flex;
+  align-items: center;
+  color: #666666;
+}
+body main section.main-bottom div.address p.body-bold {
+  height: 32px;
+}
+body main section.main-bottom div.address p.content {
+  height: 24px;
+}
+body main section.main-bottom div.transport {
+  margin: 20px 0 120px 0;
+}
+body main section.main-bottom div.transport p {
+  display: flex;
+  align-items: center;
+  color: #666666;
+}
+body main section.main-bottom div.transport p.body-bold {
+  height: 32px;
+}
+body footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 104px;
+  width: 100%;
+  background: #757575;
+  color: #FFFFFF;
+}
+
+@-webkit-keyframes hover-filter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+
+@keyframes hover-filter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media screen and (max-width: 1200px) {
+  body main {
+    width: 90%;
+  }
+  body main section.main-top {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  body main section.main-top div.images {
+    width: 100%;
+    margin: 0;
+  }
+  body main section.main-top div.info {
+    margin-top: 20px;
+    width: 100%;
+  }
+  body main hr {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  body nav div.nav-container h2 {
+    margin: 10px;
+  }
+  body nav div.nav-container ul li {
+    margin-right: 10px;
+  }
+  body main {
+    width: 100%;
+  }
+  body main section.main-top {
+    margin: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  body main section.main-top div.images {
+    width: 100%;
+    height: 350px;
+  }
+  body main section.main-top div.images img {
+    border-radius: 0px;
+  }
+  body main section.main-top div.info {
+    margin: 20px 10px 0 10px;
+    width: 95%;
+  }
+  body main section.main-top div.info div.booking {
+    height: 300px;
+  }
+  body main section.main-top div.info div.booking p.body-med {
+    margin-top: 25px;
+    font-weight: 400;
+    line-height: 23.7px;
+  }
+  body main section.main-top div.info div.booking div.date-select {
+    margin-top: 25px;
+  }
+  body main section.main-top div.info div.booking div.price p.body-med {
+    margin-top: 15px;
+  }
+  body main hr {
+    width: 100%;
+  }
+  body main section.main-bottom {
+    padding: 0 10px 0 20px;
+  }
+}/*# sourceMappingURL=attraction.css.map */
