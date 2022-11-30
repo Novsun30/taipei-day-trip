@@ -4,11 +4,10 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE = edge">
         <meta name="viewport" content="width = device-width, initial-scale = 1.0">
-        <link rel="stylesheet" href="{{url_for('static', filename = 'styles/style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename = 'styles/index.css')}}">
         <title>台北一日遊</title>
     </head>
     <body>
-        
         <nav>
             <div class="nav-container">
                 <h2>
@@ -35,13 +34,12 @@
             </div>
             <img src="{{url_for('static', filename = 'images/welcome.png')}}" alt="">
         </section>
-    
         <main>
             <section class="main-content-container"></section>
         </main>
         <footer id="scroll-bottom-detector">
             <p class="body-bold" >COPYRIGHT © 2021 台北一日遊</p>
         </footer>
-        <script src="{{url_for('static', filename = 'scripts/app.js')}}"></script>
+        <script src="{{url_for('static', filename = 'scripts/index.js')}}"></script>
     </body>
 </html>
