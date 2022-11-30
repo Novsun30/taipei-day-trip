@@ -201,26 +201,29 @@ body main section.main-content-container {
   flex-wrap: wrap;
   margin: 40px 0 40px 0;
 }
-body main section.main-content-container div.attraction-container {
-  display: flex;
-  flex-direction: column;
+body main section.main-content-container a {
   width: 270px;
   margin: 15px;
+}
+body main section.main-content-container a div.attraction-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   border: #E8E8E8 solid 1px;
   border-radius: 5px;
 }
-body main section.main-content-container div.attraction-container div.attraction-title {
+body main section.main-content-container a div.attraction-container div.attraction-title {
   position: relative;
   height: 197px;
 }
-body main section.main-content-container div.attraction-container div.attraction-title img {
+body main section.main-content-container a div.attraction-container div.attraction-title img {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px 5px 0 0;
   width: 100%;
   height: 100%;
 }
-body main section.main-content-container div.attraction-container div.attraction-title div.attraction-name-container {
+body main section.main-content-container a div.attraction-container div.attraction-title div.attraction-name-container {
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   display: flex;
@@ -228,7 +231,7 @@ body main section.main-content-container div.attraction-container div.attraction
   height: 45px;
   bottom: 0;
 }
-body main section.main-content-container div.attraction-container div.attraction-title div.attraction-name-container p.attraction-name {
+body main section.main-content-container a div.attraction-container div.attraction-title div.attraction-name-container p.attraction-name {
   display: flex;
   align-items: center;
   color: #FFFFFF;
@@ -237,15 +240,28 @@ body main section.main-content-container div.attraction-container div.attraction
   padding: 10px;
   line-height: 1.1;
 }
-body main section.main-content-container div.attraction-container div.attraction-detail {
+body main section.main-content-container a div.attraction-container div.attraction-detail {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 45px;
 }
-body main section.main-content-container div.attraction-container div.attraction-detail p {
+body main section.main-content-container a div.attraction-container div.attraction-detail p {
   color: #757575;
   padding: 10px;
+}
+body main section.main-content-container a div.filter {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+body main section.main-content-container a div.filter:hover {
+  opacity: 0.4;
+  background-color: #666666;
+  -webkit-animation: 0.5s hover-filter;
+          animation: 0.5s hover-filter;
 }
 body footer {
   display: flex;
@@ -257,11 +273,28 @@ body footer {
   color: #FFFFFF;
 }
 
+@-webkit-keyframes hover-filter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
+
+@keyframes hover-filter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.4;
+  }
+}
 @media screen and (max-width: 1200px) {
   body main section.main-content-container {
     width: 100%;
   }
-  body main section.main-content-container div.attraction-container {
+  body main section.main-content-container a {
     width: 40%;
   }
 }
@@ -285,10 +318,10 @@ body footer {
     width: 360px;
     justify-content: center;
   }
-  body main section.main-content-container div.attraction-container {
+  body main section.main-content-container a {
     width: 322px;
   }
-  body main section.main-content-container div.attraction-container div.attraction-title {
+  body main section.main-content-container a div.attraction-container div.attraction-title {
     height: 235px;
   }
-}/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=index.css.map */
