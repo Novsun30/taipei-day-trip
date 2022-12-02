@@ -15,8 +15,8 @@ cnx_pool = mysql.connector.pooling.MySQLConnectionPool(
     **db_config
 )
 
-class Date_object:
-    def __init__(self, id, name, category, description, address, transport, mrt, lat, lng):
+class Data_object:
+    def __init__(self, id, name, category, description, address, transport, mrt, lat, lng, images):
         self.id = id
         self.name = name
         self.category = category
@@ -26,19 +26,7 @@ class Date_object:
         self.mrt = mrt
         self.lat = lat
         self.lng = lng
-        self.images = None
-    def select_image(self):
-        cnx = cnx_pool.get_connection()
-        cursor = cnx.cursor()
-        select_images = "SELECT url FROM image WHERE attraction_id = %s" 
-        cursor.execute(select_images,(self.id,))
-        images = cursor.fetchall()
-        image_data = []
-        for image in images:
-            image_data.append(image[0])
-        self.images = image_data
-        cursor.close()
-        cnx.close()
+        self.images = images.split(",")
 
 @api.route("/api/attractions") 
 def api_attractions():
@@ -58,33 +46,29 @@ def api_attractions():
             data_rows = cursor.fetchone()
             if data_rows[0]/(next_page*12) < 1:
                 result["nextPage"] = None
-            select_keyword =  "SELECT * FROM attraction WHERE category LIKE %s OR name LIKE %s LIMIT %s, %s"
+            select_keyword =  "SELECT attraction.*, GROUP_CONCAT(image.url) AS images FROM attraction INNER JOIN image ON attraction.id = image.attraction_id WHERE category LIKE %s OR name LIKE %s GROUP BY attraction.id LIMIT %s, %s"
             cursor.execute(select_keyword,(keyword, name_keyword, data_start, data_end))
             attraction_data = cursor.fetchall()
             if attraction_data == []:
                 result["data"] = None
                 return jsonify(result)
-            for (id, name, category, description, address, transport, mrt, lat, lng) in attraction_data:
-                data = Date_object(id, name, category, description, address, transport, mrt, lat, lng)
-                data.select_image()
+            for (id, name, category, description, address, transport, mrt, lat, lng, images) in attraction_data:
+                data = Data_object(id, name, category, description, address, transport, mrt, lat, lng, images)
                 result["data"].append(vars(data))
-            if keyword == "":
-                result["nextPage"] = None
             return result
         select_data_rows = "SELECT COUNT(id) FROM attraction"
         cursor.execute(select_data_rows)
         all_pages = cursor.fetchone()
         if all_pages[0]/(next_page*12) < 1:
            result["nextPage"]  = None
-        select_data = "SELECT * FROM attraction LIMIT %s, %s" 
+        select_data = "SELECT attraction.*, GROUP_CONCAT(image.url) AS images FROM attraction INNER JOIN image ON attraction.id = image.attraction_id GROUP BY attraction.id LIMIT %s, %s" 
         cursor.execute(select_data,(data_start, data_end))
         attraction_data = cursor.fetchall()
         if attraction_data == []:
             result["data"] = None
             return jsonify(result)
-        for (id, name, category, description, address, transport, mrt, lat, lng) in attraction_data:
-            data = Date_object(id, name, category, description, address, transport, mrt, lat, lng)
-            data.select_image()
+        for (id, name, category, description, address, transport, mrt, lat, lng, images) in attraction_data:
+            data = Data_object(id, name, category, description, address, transport, mrt, lat, lng, images)
             result["data"].append(vars(data))
         cursor.close()
         return jsonify(result)
@@ -101,16 +85,15 @@ def api_attraction_id(attractionId):
         cursor = cnx.cursor()
         if re.search("\D", attractionId) != None:
             return jsonify({"error": True,"message": "請輸入正整數"}), 400
-        select_data = "SELECT * FROM attraction WHERE id = %s"
+        select_data = "SELECT attraction.*, GROUP_CONCAT(image.url) AS images FROM attraction INNER JOIN image ON attraction.id = image.attraction_id WHERE attraction.id = %s"
         cursor.execute(select_data,(attractionId,))
         attraction_data = cursor.fetchall()
         result = {"data":[]}
         if attraction_data == []:
             result["data"] = None
             return jsonify(result)
-        for (id, name, category, description, address, transport, mrt, lat, lng) in attraction_data:
-            data = Date_object(id, name, category, description, address, transport, mrt, lat, lng)
-        data.select_image()
+        for (id, name, category, description, address, transport, mrt, lat, lng, images) in attraction_data:
+            data = Data_object(id, name, category, description, address, transport, mrt, lat, lng, images)
         result["data"] = vars(data)
         return jsonify(result)
     except:
@@ -125,13 +108,11 @@ def api_categories():
         cnx = cnx_pool.get_connection()
         cursor = cnx.cursor()
         result = {"data":[]}
-        select_category = "SELECT DISTINCT category FROM attraction "
+        select_category = "SELECT GROUP_CONCAT(DISTINCT category) AS category FROM attraction "
         cursor.execute(select_category)
         data = cursor.fetchall()
-        categories = []
-        for category in data:
-            categories.append(category[0])
-        result["data"] = categories
+        data = data[0][0].split(",")
+        result["data"] = data
         return jsonify(result)
     except:
         return jsonify({"error": True,"message": "伺服器發生錯誤"}), 500
