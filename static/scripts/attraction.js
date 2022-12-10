@@ -8,6 +8,9 @@ async function showAttraction(){
     const id = url.match(regex)[0];
     const src = `/api/attraction/${id}`;
     let data = await fetchData(src);
+    if(data["error"] == true){
+        document.body.remove()
+    }
     data = data["data"];
     const images = data["images"];
     const imagesDiv = document.querySelector("div.images");

@@ -90,6 +90,8 @@ def api_attraction_id(attractionId):
         select_data = "SELECT attraction.*, GROUP_CONCAT(image.url) AS images FROM attraction INNER JOIN image ON attraction.id = image.attraction_id WHERE attraction.id = %s"
         cursor.execute(select_data,(attractionId,))
         attraction_data = cursor.fetchall()
+        if attraction_data[0][0] == None:
+            return jsonify({"error": True,"message": "無資料"}), 400
         result = {"data":[]}
         if attraction_data == []:
             result["data"] = None
