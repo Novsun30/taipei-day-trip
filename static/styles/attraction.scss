@@ -134,6 +134,23 @@ body{
         border-radius: 5px;
         border:  1px solid #CCC;
       }
+      div.password-input{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        input{
+          padding-right: 30px;
+        }
+        img{
+          height: 24px;
+          width: 24px;
+          position: absolute;
+          right: 5px;
+          top: auto;
+          transform: translate(0, -4.5px);
+        }
+      }
       button{
         background-color: $primary-cyan-70;
         color: $white;

@@ -14,7 +14,10 @@
                 <img class="close-button" src="{{url_for('static', filename = 'images/icon_close.png')}}" alt="">
                 <h3 class="bold">登入會員帳號</h3>
                 <input class="body-med email-log-in" type="text" placeholder="輸入電子信箱">
-                <input class="body-med password-log-in" type="text" placeholder="輸入密碼">
+                <div class="password-input">
+                    <input class="body-med password-log-in" type="password" placeholder="輸入密碼">
+                    <img src="{{url_for('static', filename = 'images/icon_eye.png')}}" alt="" class="password-eye">
+                </div>
                 <button class="button log-in-button">登入帳戶</button>
                 <p class="body-med">還沒有帳戶？<span class="toggle-sign-up">點此註冊</span></p>
             </div>
@@ -24,7 +27,10 @@
                 <h3 class="bold">註冊會員帳號</h3>
                 <input class="body-med name-sign-up" type="text" placeholder="輸入姓名">
                 <input class="body-med email-sign-up" type="text" placeholder="輸入電子郵件">
-                <input class="body-med password-sign-up" type="text" placeholder="輸入密碼">
+                <div class="password-input">
+                    <input class="body-med password-sign-up" type="password" placeholder="輸入密碼">
+                    <img src="{{url_for('static', filename = 'images/icon_eye.png')}}" alt="" class="password-eye">
+                </div>
                 <button class="button sign-up-button">註冊新帳戶</button>
                 <p class="body-med">已經有帳戶了？<span class="toggle-log-in">點此登入</span></p>
             </div>

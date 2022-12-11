@@ -201,7 +201,20 @@ async function logOut(){
     logInSignUp.addEventListener("click", showLogInPanel);
     location.reload();
 }
+function togglePasswordDisplay(){
+    if(passwordSignUp.getAttribute("type") == "password" | passwordLogIn.getAttribute("type" == "password")){
+        passwordSignUp.setAttribute("type", "text");
+        passwordLogIn.setAttribute("type", "text");
+        return;
+    }
+    passwordSignUp.setAttribute("type", "password");
+    passwordLogIn.setAttribute("type", "password");
+}
 
 const logInSignUp = document.querySelector("li.log-in-sign-up");
 logInSignUp.addEventListener("click", showLogInPanel);
 getMemberData();
+const passwordEye = document.querySelectorAll("img.password-eye");
+const passwordSignUp = document.querySelector("input.password-sign-up");
+const passwordLogIn = document.querySelector("input.password-log-in");
+passwordEye.forEach(element=>{element.addEventListener("click", togglePasswordDisplay)});

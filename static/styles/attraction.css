@@ -134,6 +134,23 @@ body div.log-in-filter div.log-in-panel input, body div.log-in-filter div.sign-u
   border-radius: 5px;
   border: 1px solid #CCC;
 }
+body div.log-in-filter div.log-in-panel div.password-input, body div.log-in-filter div.sign-up-panel div.password-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+body div.log-in-filter div.log-in-panel div.password-input input, body div.log-in-filter div.sign-up-panel div.password-input input {
+  padding-right: 30px;
+}
+body div.log-in-filter div.log-in-panel div.password-input img, body div.log-in-filter div.sign-up-panel div.password-input img {
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  right: 5px;
+  top: auto;
+  transform: translate(0, -4.5px);
+}
 body div.log-in-filter div.log-in-panel button, body div.log-in-filter div.sign-up-panel button {
   background-color: #448899;
   color: #FFFFFF;
