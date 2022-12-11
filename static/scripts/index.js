@@ -2,7 +2,7 @@ function addData(data, dataStart, dataEnd){
     let dataIndex = 0;
     for(let i = dataStart; i < dataEnd; i++){
         const id = data[dataIndex]["id"];
-        const attractionUrl = `http://52.69.110.95:3000/attraction/${id}`;
+        const attractionUrl = `/attraction/${id}`;
         const sectionContainer = document.querySelector("section.main-content-container");
         const newAnchorTag = document.createElement("a");
         newAnchorTag.href = attractionUrl;
@@ -66,10 +66,6 @@ async function getData(url, page, keyword){
     return page = nextPage;
 }
 
-async function showData(){
-    page = await getData(url, page, keyword);
-}
-
 async function throttle(){
     if(loadStatus){
         return;
@@ -82,11 +78,11 @@ async function throttle(){
             return;
         }
         loadStatus = true;
-        await showData();
+        page = await getData(url, page, keyword);
         loadStatus = false;
 }}
 
-function searchAttraction(){
+async function searchAttraction(){
     let sectionContainer = document.querySelector("section.main-content-container");
     sectionContainer.replaceChildren();   
     page = 0;
@@ -96,12 +92,12 @@ function searchAttraction(){
     if (inputValue == ""){
         keyword = "";
     }
-    showData();
+    page = await getData(url, page, keyword);
     window.addEventListener("scroll", throttle, {passive: true});
 }
 
 function showCategoryMenu(){
-    let categoryMenu = document.querySelector("div.category-menu");
+    const categoryMenu = document.querySelector("div.category-menu");
     categoryMenu.style.display = "flex";
     document.addEventListener("click",(e)=>{
         if(e.target.className != "category-menu" && e.target.className != "body-bold search-input"){
@@ -111,7 +107,7 @@ function showCategoryMenu(){
 }
 
 async function getCategories(){
-    let response = await fetch("http://52.69.110.95:3000/api/categories"); 
+    const response = await fetch("/api/categories"); 
     let data = await response.json();
     data = data["data"];
     for(let i=0;i < data.length; i++){
@@ -121,20 +117,20 @@ async function getCategories(){
         category.textContent = data[i];
         categoryMenu.appendChild(category);
         category.addEventListener("click",()=>{
-            let input = document.querySelector("input.search-input");
+            const input = document.querySelector("input.search-input");
             input.value = data[i];
             categoryMenu.style.display = "none";
         });
     }
-    let categoryMenu = document.querySelector("div.category-menu");
+    const categoryMenu = document.querySelector("div.category-menu");
     categoryMenu.style.display = "none";
 }
 
 let page = 0;
 let keyword = "";
 let loadStatus = false;
-let url = "http://52.69.110.95:3000/api/attractions?page="; 
-showData();
+let url = "/api/attractions?page="; 
+(async ()=> {page = await getData(url, page, keyword);})();
 getCategories();
 const footer = document.getElementById("scroll-bottom-detector");
 window.addEventListener("scroll", throttle, {passive: true});

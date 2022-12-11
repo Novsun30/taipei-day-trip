@@ -83,6 +83,108 @@ body{
   flex-direction: column;
   align-items: center;
 
+  div.log-in-filter{
+    position: fixed;
+    display: none;
+    justify-content: center;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: $black, $alpha: 0.25);
+    animation: 0.5s fade-in;
+
+    div.log-in-panel, div.sign-up-panel{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 340px;
+      height: 275px;
+      margin-top: 80px;
+      background-color: $white;
+      padding: 0 15px 15px 15px;
+      border-radius: 6px;
+      animation: 0.5s fade-in;
+
+      div.gradient{
+        height: 10px;
+        width: 340px;
+        background: $light-dark-270deg;
+        margin-bottom: 15px;
+        border-radius: 6px 6px 0 0;
+      }
+      img{
+        position: absolute;
+        right: 17px;
+        top: 27px; 
+        cursor: pointer;
+      }
+      h3{
+        display: flex;
+        align-items: center;
+        height: 27px;
+        margin-bottom: 15px;
+        color: $secondary-gray-70;
+      }
+      input{
+        margin-bottom: 10px;
+        width: 310px;
+        height: 47px;
+        padding: 15px;
+        border-radius: 5px;
+        border:  1px solid #CCC;
+      }
+      div.password-input{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        input{
+          padding-right: 30px;
+        }
+        img{
+          height: 24px;
+          width: 24px;
+          position: absolute;
+          right: 5px;
+          top: auto;
+          transform: translate(0, -4.5px);
+        }
+      }
+      button{
+        background-color: $primary-cyan-70;
+        color: $white;
+        width: 310px;
+        height: 47px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        border: none;
+        cursor: pointer;
+      }
+      p{
+        display: flex;
+        align-items: center;
+        color: $secondary-gray-70;
+        height: 22px;
+
+        span{
+          cursor: pointer;
+        }
+      }
+      p.log-in-error, p.sign-up-error, p.sign-up-success{
+        margin-bottom: 10px;
+        color: #FF3333;
+        animation: 0.5s fade-in;
+      }
+      p.sign-up-success{
+        color: #33FF33;
+      }
+    }
+    div.sign-up-panel{
+      display: none;
+      height: 332px;
+    }
+  }
   nav{
     display: flex;
     justify-content: center;
@@ -114,6 +216,7 @@ body{
 
         li{
           margin-right: 20px;
+          cursor: pointer;
         }
       }
     }

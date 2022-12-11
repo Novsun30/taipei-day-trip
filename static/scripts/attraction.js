@@ -1,13 +1,16 @@
-function fetchData(src){
-  return fetch(src).then(response=>response.json()).then(data=>data);
+async function fetchData(src){
+  return await fetch(src).then(response=>response.json()).then(data=>data);
 }
 
 async function showAttraction(){
     const url = document.URL;
     const regex = /(?<=attraction\/)\d+/;
     const id = url.match(regex)[0];
-    const src = `http://52.69.110.95:3000/api/attraction/${id}`;
+    const src = `/api/attraction/${id}`;
     let data = await fetchData(src);
+    if(data["error"] == true){
+        document.body.remove()
+    }
     data = data["data"];
     const images = data["images"];
     const imagesDiv = document.querySelector("div.images");
@@ -98,14 +101,6 @@ if(radioNight.checked){
     priceDetail.innerText = "新台幣 2500 元";
     }
 })
-
-let showingImgIndex = 0;
-const leftArrow = document.querySelector("button.left-arrow");
-const rightArrow = document.querySelector("button.right-arrow");
-rightArrow.addEventListener("click", nextImg);
-leftArrow.addEventListener("click", previousImg);
-
-
 function nextImg(){
     const images = document.querySelectorAll("img.attraction-img");
     const dotIndicator = document.querySelectorAll("div.dot-indicator");
@@ -157,3 +152,9 @@ function imgSelector(e){
     images[showingImgIndex].style.display = "block";
     dotIndicator[showingImgIndex].style.display = "block";
 }
+
+let showingImgIndex = 0;
+const leftArrow = document.querySelector("button.left-arrow");
+const rightArrow = document.querySelector("button.right-arrow");
+rightArrow.addEventListener("click", nextImg);
+leftArrow.addEventListener("click", previousImg);

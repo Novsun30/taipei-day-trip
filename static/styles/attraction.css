@@ -81,6 +81,108 @@ body {
   flex-direction: column;
   align-items: center;
 }
+body div.log-in-filter {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  -webkit-animation: 0.5s fade-in;
+          animation: 0.5s fade-in;
+}
+body div.log-in-filter div.log-in-panel, body div.log-in-filter div.sign-up-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 340px;
+  height: 275px;
+  margin-top: 80px;
+  background-color: #FFFFFF;
+  padding: 0 15px 15px 15px;
+  border-radius: 6px;
+  -webkit-animation: 0.5s fade-in;
+          animation: 0.5s fade-in;
+}
+body div.log-in-filter div.log-in-panel div.gradient, body div.log-in-filter div.sign-up-panel div.gradient {
+  height: 10px;
+  width: 340px;
+  background: linear-gradient(270deg, #337788, #66AABB);
+  margin-bottom: 15px;
+  border-radius: 6px 6px 0 0;
+}
+body div.log-in-filter div.log-in-panel img, body div.log-in-filter div.sign-up-panel img {
+  position: absolute;
+  right: 17px;
+  top: 27px;
+  cursor: pointer;
+}
+body div.log-in-filter div.log-in-panel h3, body div.log-in-filter div.sign-up-panel h3 {
+  display: flex;
+  align-items: center;
+  height: 27px;
+  margin-bottom: 15px;
+  color: #666666;
+}
+body div.log-in-filter div.log-in-panel input, body div.log-in-filter div.sign-up-panel input {
+  margin-bottom: 10px;
+  width: 310px;
+  height: 47px;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #CCC;
+}
+body div.log-in-filter div.log-in-panel div.password-input, body div.log-in-filter div.sign-up-panel div.password-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+body div.log-in-filter div.log-in-panel div.password-input input, body div.log-in-filter div.sign-up-panel div.password-input input {
+  padding-right: 30px;
+}
+body div.log-in-filter div.log-in-panel div.password-input img, body div.log-in-filter div.sign-up-panel div.password-input img {
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  right: 5px;
+  top: auto;
+  transform: translate(0, -4.5px);
+}
+body div.log-in-filter div.log-in-panel button, body div.log-in-filter div.sign-up-panel button {
+  background-color: #448899;
+  color: #FFFFFF;
+  width: 310px;
+  height: 47px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+}
+body div.log-in-filter div.log-in-panel p, body div.log-in-filter div.sign-up-panel p {
+  display: flex;
+  align-items: center;
+  color: #666666;
+  height: 22px;
+}
+body div.log-in-filter div.log-in-panel p span, body div.log-in-filter div.sign-up-panel p span {
+  cursor: pointer;
+}
+body div.log-in-filter div.log-in-panel p.log-in-error, body div.log-in-filter div.log-in-panel p.sign-up-error, body div.log-in-filter div.log-in-panel p.sign-up-success, body div.log-in-filter div.sign-up-panel p.log-in-error, body div.log-in-filter div.sign-up-panel p.sign-up-error, body div.log-in-filter div.sign-up-panel p.sign-up-success {
+  margin-bottom: 10px;
+  color: #FF3333;
+  -webkit-animation: 0.5s fade-in;
+          animation: 0.5s fade-in;
+}
+body div.log-in-filter div.log-in-panel p.sign-up-success, body div.log-in-filter div.sign-up-panel p.sign-up-success {
+  color: #33FF33;
+}
+body div.log-in-filter div.sign-up-panel {
+  display: none;
+  height: 332px;
+}
 body nav {
   display: flex;
   justify-content: center;
@@ -113,6 +215,7 @@ body nav div.nav-container ul {
 }
 body nav div.nav-container ul li {
   margin-right: 20px;
+  cursor: pointer;
 }
 body main {
   display: flex;
