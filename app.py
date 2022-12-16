@@ -1,11 +1,14 @@
 from flask import *
-from api import api
+from api.api_attraction import api_attraction
+from api.api_user import api_user
+from api.api_booking import api_booking
 
 app = Flask(__name__)
-app.register_blueprint(api)
+app.register_blueprint(api_attraction)
+app.register_blueprint(api_user)
+app.register_blueprint(api_booking)
 app.config["JSON_AS_ASCII"] = False
 app.config["TEMPLATES_AUTO_RELOAD"] = True
-app.config["JSON_SORT_KEYS"] = False
 
 @app.route("/")
 def index():
@@ -20,4 +23,4 @@ def booking():
 def thankyou():
 	return render_template("thankyou.html")
 
-app.run(host = "0.0.0.0", port = 3000)
+app.run(host = "0.0.0.0", port = 3000, debug=True)

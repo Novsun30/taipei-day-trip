@@ -1,221 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Noto Sans TC";
-}
-
-h1 {
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 24px;
-}
-
-h2 {
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 34px;
-}
-
-h3.bold {
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 24px;
-}
-
-h3 {
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 24px;
-}
-
-.button-bold {
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 16px;
-}
-
-.button {
-  font-weight: 400;
-  font-size: 19px;
-  line-height: 16px;
-}
-
-.content-bold {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: auto;
-}
-
-.content {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: auto;
-}
-
-.body-bold {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 13.3px;
-}
-
-.body-med {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 13.3px;
-}
-
-.category-list {
-  font-weight: 500;
-  font-size: 14;
-  line-height: auto;
-}
-
-a {
-  text-decoration: none;
-}
-
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-body div.log-in-filter {
-  position: fixed;
-  display: none;
-  justify-content: center;
-  z-index: 4;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.25);
-  -webkit-animation: 0.5s fade-in;
-          animation: 0.5s fade-in;
-}
-body div.log-in-filter div.log-in-panel, body div.log-in-filter div.sign-up-panel {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 340px;
-  height: 275px;
-  margin-top: 80px;
-  background-color: #FFFFFF;
-  padding: 0 15px 15px 15px;
-  border-radius: 6px;
-  -webkit-animation: 0.5s fade-in;
-          animation: 0.5s fade-in;
-}
-body div.log-in-filter div.log-in-panel div.gradient, body div.log-in-filter div.sign-up-panel div.gradient {
-  height: 10px;
-  width: 340px;
-  background: linear-gradient(270deg, #337788, #66AABB);
-  margin-bottom: 15px;
-  border-radius: 6px 6px 0 0;
-}
-body div.log-in-filter div.log-in-panel img, body div.log-in-filter div.sign-up-panel img {
-  position: absolute;
-  right: 17px;
-  top: 27px;
-  cursor: pointer;
-}
-body div.log-in-filter div.log-in-panel h3, body div.log-in-filter div.sign-up-panel h3 {
-  display: flex;
-  align-items: center;
-  height: 27px;
-  margin-bottom: 15px;
-  color: #666666;
-}
-body div.log-in-filter div.log-in-panel input, body div.log-in-filter div.sign-up-panel input {
-  margin-bottom: 10px;
-  width: 310px;
-  height: 47px;
-  padding: 15px;
-  border-radius: 5px;
-  border: 1px solid #CCC;
-}
-body div.log-in-filter div.log-in-panel div.password-input, body div.log-in-filter div.sign-up-panel div.password-input {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-body div.log-in-filter div.log-in-panel div.password-input input, body div.log-in-filter div.sign-up-panel div.password-input input {
-  padding-right: 30px;
-}
-body div.log-in-filter div.log-in-panel div.password-input img, body div.log-in-filter div.sign-up-panel div.password-input img {
-  height: 24px;
-  width: 24px;
-  position: absolute;
-  right: 5px;
-  top: auto;
-  transform: translate(0, -4.5px);
-}
-body div.log-in-filter div.log-in-panel button, body div.log-in-filter div.sign-up-panel button {
-  background-color: #448899;
-  color: #FFFFFF;
-  width: 310px;
-  height: 47px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  border: none;
-  cursor: pointer;
-}
-body div.log-in-filter div.log-in-panel p, body div.log-in-filter div.sign-up-panel p {
-  display: flex;
-  align-items: center;
-  color: #666666;
-  height: 22px;
-}
-body div.log-in-filter div.log-in-panel p span, body div.log-in-filter div.sign-up-panel p span {
-  cursor: pointer;
-}
-body div.log-in-filter div.log-in-panel p.log-in-error, body div.log-in-filter div.log-in-panel p.sign-up-error, body div.log-in-filter div.log-in-panel p.sign-up-success, body div.log-in-filter div.sign-up-panel p.log-in-error, body div.log-in-filter div.sign-up-panel p.sign-up-error, body div.log-in-filter div.sign-up-panel p.sign-up-success {
-  margin-bottom: 10px;
-  color: #FF3333;
-  -webkit-animation: 0.5s fade-in;
-          animation: 0.5s fade-in;
-}
-body div.log-in-filter div.log-in-panel p.sign-up-success, body div.log-in-filter div.sign-up-panel p.sign-up-success {
-  color: #33FF33;
-}
-body div.log-in-filter div.sign-up-panel {
-  display: none;
-  height: 332px;
-}
-body nav {
-  display: flex;
-  justify-content: center;
-  background-color: #FFFFFF;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  height: 54px;
-  width: 100%;
-  box-shadow: 1px 0px 5px 1px #757575;
-}
-body nav div.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 1200px;
-}
-body nav div.nav-container h2 {
-  color: #448899;
-  margin-left: 15px;
-}
-body nav div.nav-container h2 a {
-  color: #448899;
-}
-body nav div.nav-container ul {
-  list-style: none;
-  display: flex;
-  color: #666666;
-}
-body nav div.nav-container ul li {
-  margin-right: 20px;
-  cursor: pointer;
 }
 body main {
   display: flex;
@@ -443,6 +229,11 @@ body main section.main-top div.info div.booking button.button {
   width: 154px;
   height: 36px;
   margin-top: 25px;
+  cursor: pointer;
+}
+body main section.main-top div.info div.booking p.booking-error-message {
+  margin-left: 20px;
+  color: #FF3333;
 }
 body main hr {
   width: 1200px;
@@ -477,15 +268,6 @@ body main section.main-bottom div.transport p {
 }
 body main section.main-bottom div.transport p.body-bold {
   height: 32px;
-}
-body footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 104px;
-  width: 100%;
-  background: #757575;
-  color: #FFFFFF;
 }
 
 @-webkit-keyframes hover-filter {
@@ -543,12 +325,6 @@ body footer {
   }
 }
 @media screen and (max-width: 600px) {
-  body nav div.nav-container h2 {
-    margin: 10px;
-  }
-  body nav div.nav-container ul li {
-    margin-right: 10px;
-  }
   body main {
     width: 100%;
   }
@@ -570,7 +346,7 @@ body footer {
     width: 95%;
   }
   body main section.main-top div.info div.booking {
-    height: 300px;
+    height: auto;
   }
   body main section.main-top div.info div.booking p.body-med {
     margin-top: 25px;
