@@ -1,0 +1,190 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
+}
+body main hr {
+  border-top: 1px solid #E8E8E8;
+  border-bottom: none;
+  width: 1200px;
+}
+body main p, body main label {
+  color: #666666;
+}
+body main p.headline {
+  margin: 46px 0 35px 0;
+  width: 85%;
+}
+body main p.booking-message {
+  margin: 0 0 40px 0;
+  width: 85%;
+}
+body main section.booking-data-container {
+  width: 85%;
+}
+body main section.booking-data-container div.booking-data {
+  display: flex;
+  position: relative;
+  margin-bottom: 40px;
+}
+body main section.booking-data-container div.booking-data img.attraction-image {
+  width: 250px;
+  height: 200px;
+}
+body main section.booking-data-container div.booking-data div.attraction-data {
+  margin-left: 30px;
+}
+body main section.booking-data-container div.booking-data div.attraction-data p.attraction-name {
+  padding: 3px 0 10px 0px;
+  color: #448899;
+}
+body main section.booking-data-container div.booking-data div.attraction-data div {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+body main section.booking-data-container div.booking-data img.trash-can {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+}
+body main section.contact-data {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 44px 0 45px 0;
+}
+body main section.contact-data input {
+  padding: 10px;
+  width: 200px;
+  height: 38px;
+  border: solid 1px #E8E8E8;
+  border-radius: 5px;
+}
+body main section.contact-data div {
+  margin-bottom: 15px;
+}
+body main section.contact-data p.contact-headline {
+  margin-bottom: 24px;
+}
+body main section.contact-data p.contact-warning {
+  margin-top: 5px;
+}
+body main section.credit-card-data {
+  margin: 44px 0 25px 0;
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+body main section.credit-card-data input {
+  padding: 10px;
+  width: 200px;
+  height: 38px;
+  border: solid 1px #E8E8E8;
+  border-radius: 5px;
+}
+body main section.credit-card-data div {
+  margin-bottom: 15px;
+}
+body main section.credit-card-data p.credit-headline {
+  margin-bottom: 24px;
+}
+body main div.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 43px 0 62px 0;
+  width: 85%;
+}
+body main div.payment p.total-price {
+  margin-bottom: 25px;
+}
+body main div.payment button {
+  width: 173px;
+  height: 36px;
+  border-radius: 5px;
+  border: none;
+  background-color: #448899;
+  color: #FFFFFF;
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  body main {
+    width: 100%;
+  }
+  body main hr {
+    width: 95%;
+  }
+  body main section.booking-data-container div.booking-data {
+    align-items: center;
+  }
+  body main section.booking-data-container div.booking-data div.attraction-data p {
+    line-height: 1.2;
+  }
+  body main section.booking-data-container div.booking-data div.attraction-data p.attraction-name {
+    padding-right: 30px;
+  }
+  body main section.booking-data-container img.trash-can {
+    top: 0;
+  }
+  body main section.contact-data p.contact-warning {
+    font-weight: 700;
+    line-height: normal;
+  }
+}
+@media screen and (max-width: 600px) {
+  body main p.headline {
+    width: 100%;
+    padding: 0 10px 0 10px;
+  }
+  body main p.booking-message {
+    width: 100%;
+    padding: 0 10px 0 10px;
+  }
+  body main section.booking-data-container {
+    width: 100%;
+    padding: 0 10px 15px 10px;
+  }
+  body main section.booking-data-container div.booking-data {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  body main section.booking-data-container div.booking-data div.attraction-data {
+    margin: 30px 0 0 0;
+  }
+  body main section.booking-data-container div.booking-data div.attraction-data p {
+    line-height: 16px;
+  }
+  body main section.booking-data-container div.booking-data div.attraction-data p.attraction-name {
+    padding-right: 0;
+  }
+  body main section.booking-data-container div.booking-data img.attraction-image {
+    width: 100%;
+    height: auto;
+  }
+  body main section.booking-data-container img.trash-can {
+    top: auto;
+    bottom: -30px;
+  }
+  body main section.contact-data {
+    width: 100%;
+    padding: 0 10px 0 10px;
+  }
+  body main section.credit-card-data {
+    width: 100%;
+    padding: 0 10px 0 10px;
+  }
+  body main div.payment {
+    width: 100%;
+    padding: 0 10px 0 10px;
+  }
+}/*# sourceMappingURL=booking.css.map */

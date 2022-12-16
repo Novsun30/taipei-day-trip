@@ -1,3 +1,26 @@
+showAttraction();
+const radioDay = document.querySelector("input.radio-day");
+const radioNight = document.querySelector("input.radio-night");
+radioDay.addEventListener("change", ()=>{
+    if(radioDay.checked){
+    const priceDetail = document.querySelector("p.price-detail");
+    priceDetail.innerText = "新台幣 2000 元";
+    }
+})
+radioNight.addEventListener("change", ()=>{
+if(radioNight.checked){
+    const priceDetail = document.querySelector("p.price-detail");
+    priceDetail.innerText = "新台幣 2500 元";
+    }
+})
+let showingImgIndex = 0;
+const leftArrow = document.querySelector("button.left-arrow");
+const rightArrow = document.querySelector("button.right-arrow");
+rightArrow.addEventListener("click", nextImg);
+leftArrow.addEventListener("click", previousImg);
+const bookingSubmitButton = document.querySelector("button.booking-submit");
+bookingSubmitButton.addEventListener("click", bookingSubmit);
+
 async function fetchData(src){
   return await fetch(src).then(response=>response.json()).then(data=>data);
 }
@@ -28,7 +51,6 @@ async function showAttraction(){
     dotContainer.appendChild(newDot);
     newDot.appendChild(newDotIndicator);
     newDot.addEventListener("click", imgSelector);
-
 
     for(let i = 1; i < images.length; i++){
         const newMoreImg = document.createElement("img");
@@ -86,21 +108,6 @@ async function showAttraction(){
     transportDiv.appendChild(newTransport);
 }
 
-showAttraction();
-const radioDay = document.querySelector("input.radio-day");
-const radioNight = document.querySelector("input.radio-night");
-radioDay.addEventListener("change", ()=>{
-    if(radioDay.checked){
-    const priceDetail = document.querySelector("p.price-detail");
-    priceDetail.innerText = "新台幣 2000 元";
-    }
-})
-radioNight.addEventListener("change", ()=>{
-if(radioNight.checked){
-    const priceDetail = document.querySelector("p.price-detail");
-    priceDetail.innerText = "新台幣 2500 元";
-    }
-})
 function nextImg(){
     const images = document.querySelectorAll("img.attraction-img");
     const dotIndicator = document.querySelectorAll("div.dot-indicator");
@@ -153,8 +160,59 @@ function imgSelector(e){
     dotIndicator[showingImgIndex].style.display = "block";
 }
 
-let showingImgIndex = 0;
-const leftArrow = document.querySelector("button.left-arrow");
-const rightArrow = document.querySelector("button.right-arrow");
-rightArrow.addEventListener("click", nextImg);
-leftArrow.addEventListener("click", previousImg);
+async function bookingSubmit(){
+    const bookingErrorMessage = document.querySelector("p.booking-error-message");
+    if(bookingErrorMessage != null){
+        bookingErrorMessage.remove();
+    }
+    const date = document.querySelector("input.date-select").value;
+    if (date == ""){
+        const newErrorMessage = document.createElement("p");
+        const bookingDiv = document.querySelector("div.booking");
+        newErrorMessage.textContent = "請輸入日期！";
+        newErrorMessage.classList.add("booking-error-message");
+        bookingDiv.appendChild(newErrorMessage);
+        return;
+    }
+    const newDate = new Date();
+    const currentDate = `${newDate.getFullYear()}-${newDate.getMonth()+1}-${newDate.getDate()}`
+    if(date <= currentDate){
+        const newErrorMessage = document.createElement("p");
+        const bookingDiv = document.querySelector("div.booking");
+        newErrorMessage.textContent = "只能預約明天(含)以後的日期！";
+        newErrorMessage.classList.add("booking-error-message");
+        bookingDiv.appendChild(newErrorMessage);
+        return;
+    }
+    let timeInput = document.querySelector("input[name='time']:checked").value;
+    timeInput = timeInput.split(",");
+    const time = timeInput[0];
+    const price = Number(timeInput[1]);
+    const regex = /(?<=attraction\/)\d+/;
+    const id = Math.abs(document.URL.match(regex)[0]) ;
+    console.log(id, date, time, price);
+    const BookingData = {
+        "attractionId": id,
+        "date": date,
+        "time": time,
+        "price": price
+    }
+    const response = await fetch("/api/booking",{
+        method : "POST",
+        headers : {"content-type": "application/json"},
+        body : JSON.stringify(BookingData)
+    })
+    const bookingResult = await response.json();
+    if(bookingResult["error"] == true){
+        const newErrorMessage = document.createElement("p");
+        const bookingDiv = document.querySelector("div.booking");
+        newErrorMessage.textContent = "預約失敗！";
+        if(bookingResult.message == "該日期已預訂"){
+            newErrorMessage.textContent = "該日期已預訂過了！"
+        }
+        newErrorMessage.classList.add("booking-error-message");
+        bookingDiv.appendChild(newErrorMessage);
+        return;
+    }
+    window.location.href = "/booking"
+}

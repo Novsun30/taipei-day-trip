@@ -1,0 +1,210 @@
+@import "./variables";
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1200px;
+    hr{
+      border-top: 1px solid $secondary-gray-20;
+      border-bottom: none;
+      width: 1200px;
+    }
+    p, label{
+      color: $secondary-gray-70;
+    }
+    p.headline{
+      margin: 46px 0 35px 0;
+      width: 85%;
+    }
+    p.booking-message{
+      margin: 0 0 40px 0;
+      width: 85%;
+    }
+    section.booking-data-container{
+      width: 85%;
+
+      div.booking-data{
+        display: flex;
+        position: relative;
+        margin-bottom: 40px;
+
+        img.attraction-image{
+          width: 250px;
+          height: 200px;
+        }
+        div.attraction-data{
+          margin-left: 30px;
+
+          p.attraction-name{
+            padding: 3px 0 10px 0px;
+            color: $primary-cyan-70;
+          }
+          div{
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+          }
+        }
+        img.trash-can{
+          cursor: pointer;
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+    section.contact-data{
+      display: flex;
+      flex-direction: column;
+      width: 85%;
+      margin: 44px 0 45px 0;
+      input{
+        padding: 10px;
+        width: 200px;
+        height: 38px;
+        border: solid 1px $secondary-gray-20;
+        border-radius: 5px;
+      }
+      div{
+        margin-bottom: 15px;
+      }
+      p.contact-headline{
+        margin-bottom: 24px;
+      }
+      p.contact-warning{
+        margin-top: 5px;
+      }
+    }
+    section.credit-card-data{
+        margin: 44px 0 25px 0;
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        input{
+          padding: 10px;
+          width: 200px;
+          height: 38px;
+          border: solid 1px $secondary-gray-20;
+          border-radius: 5px;
+        }
+        div{
+          margin-bottom: 15px;
+        }
+        p.credit-headline{
+          margin-bottom: 24px;
+        }
+    }
+    div.payment{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin: 43px 0 62px 0;
+      width: 85%;
+      p.total-price{
+        margin-bottom: 25px;
+      }
+      button{
+          width: 173px;
+          height: 36px;
+          border-radius: 5px;
+          border: none;
+          background-color: $primary-cyan-70;
+          color: $white;
+          padding: 10px 20px 10px 20px;
+          cursor: pointer;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:1200px){
+  body{
+
+    main{
+      width: 100%;
+      hr{
+        width: 95%;
+      }
+      section.booking-data-container{
+        div.booking-data{
+          align-items: center;
+            div.attraction-data{
+              p{
+                line-height: 1.2;
+              }
+              p.attraction-name{
+                padding-right: 30px;
+              }
+            }
+        }
+        img.trash-can{
+          top: 0;
+        }
+      }
+      section.contact-data{
+        p.contact-warning{
+          font-weight: 700;
+          line-height: normal;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:600px){
+  body{
+
+    main{
+      p.headline{
+        width: 100%;
+        padding: 0 10px 0 10px;
+      }
+      p.booking-message{
+        width: 100%;
+        padding: 0 10px 0 10px;
+      }
+      section.booking-data-container{
+        width: 100%;
+        padding: 0 10px 15px 10px;
+        div.booking-data{
+          flex-direction: column;
+          align-items: flex-start;
+          width: 100%;
+          div.attraction-data{
+            margin: 30px 0 0 0;
+            p{
+              line-height: 16px;
+            }
+            p.attraction-name{
+              padding-right: 0;
+            }
+          }
+          img.attraction-image{
+            width: 100%;
+            height: auto;
+          }
+        }
+        img.trash-can{
+          top: auto;
+          bottom: -30px;
+        }
+      }
+      section.contact-data{
+        width: 100%;
+        padding: 0 10px 0 10px;
+      }
+      section.credit-card-data{
+        width: 100%;
+        padding: 0 10px 0 10px;
+      }
+      div.payment{
+        width: 100%;
+        padding: 0 10px 0 10px;
+      }
+    }
+  }
+}
