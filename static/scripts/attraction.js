@@ -1,3 +1,5 @@
+import { showLogInPanel } from "./modules/UserPanel.js";
+
 showAttraction();
 const radioDay = document.querySelector("input.radio-day");
 const radioNight = document.querySelector("input.radio-night");
@@ -165,6 +167,12 @@ async function bookingSubmit(){
     if(bookingErrorMessage != null){
         bookingErrorMessage.remove();
     }
+    const memberResponse = await fetch("/api/user/auth");
+    const memberData = await memberResponse.json();
+    if(memberData["data"] == null){
+        showLogInPanel();
+        return;
+    }
     const date = document.querySelector("input.date-select").value;
     if (date == ""){
         const newErrorMessage = document.createElement("p");
@@ -190,7 +198,6 @@ async function bookingSubmit(){
     const price = Number(timeInput[1]);
     const regex = /(?<=attraction\/)\d+/;
     const id = Math.abs(document.URL.match(regex)[0]) ;
-    console.log(id, date, time, price);
     const BookingData = {
         "attractionId": id,
         "date": date,
