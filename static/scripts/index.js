@@ -1,3 +1,16 @@
+let page = 0;
+let keyword = "";
+let loadStatus = false;
+let url = "/api/attractions?page="; 
+(async ()=> {page = await getData(url, page, keyword);})();
+getCategories();
+const footer = document.getElementById("scroll-bottom-detector");
+window.addEventListener("scroll", throttle, {passive: true});
+const searchButton = document.querySelector("button.search-submit");
+searchButton.addEventListener("click", searchAttraction);
+const searchInput = document.querySelector("input.search-input");
+searchInput.addEventListener("focus", showCategoryMenu);
+
 function addData(data, dataStart, dataEnd){
     let dataIndex = 0;
     for(let i = dataStart; i < dataEnd; i++){
@@ -125,16 +138,3 @@ async function getCategories(){
     const categoryMenu = document.querySelector("div.category-menu");
     categoryMenu.style.display = "none";
 }
-
-let page = 0;
-let keyword = "";
-let loadStatus = false;
-let url = "/api/attractions?page="; 
-(async ()=> {page = await getData(url, page, keyword);})();
-getCategories();
-const footer = document.getElementById("scroll-bottom-detector");
-window.addEventListener("scroll", throttle, {passive: true});
-const searchButton = document.querySelector("button.search-submit");
-searchButton.addEventListener("click", searchAttraction);
-const searchInput = document.querySelector("input.search-input");
-searchInput.addEventListener("focus", showCategoryMenu);
