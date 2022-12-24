@@ -1,11 +1,13 @@
 from flask import *
-import mysql.connector, mysql.connector.pooling, jwt
+import mysql.connector, mysql.connector.pooling, jwt, os
+from dotenv import load_dotenv
+load_dotenv()
 api_booking = Blueprint("api_booking", __name__)
-secret_key = "hello pyjwt"
+secret_key = os.getenv("JWT_KEY")
 
 db_config = {
     "user": "root",
-    "password": "1234",
+    "password": os.getenv("DB_PASSWORD"),
     "host": "127.0.0.1",
     "database": "taipei_day_trip"
 }

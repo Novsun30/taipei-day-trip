@@ -55,15 +55,15 @@
                 <p class="button-bold contact-headline">您的聯絡資訊</p>
                 <div class="contact-name">
                     <label for="" class="body-med">聯絡姓名：</label>
-                    <input type="text" class="body-med name-input">
+                    <input type="text" class="body-med name-input" maxlength="200">
                 </div>
                 <div class="contact-email">
                     <label for="" class="body-med">連絡信箱：</label>
-                    <input type="text" class="body-med email-input">
+                    <input type="text" class="body-med email-input" maxlength="200">
                 </div>
                 <div class="contact-number">
                     <label for="" class="body-med">手機號碼：</label>
-                    <input type="text" class="body-med">
+                    <input type="text" class="body-med number-input" maxlength="10">
                 </div>
                 <p class="body-bold contact-warning">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
             </section>
@@ -72,15 +72,15 @@
                 <p class="button-bold credit-headline">信用卡付款資訊</p>
                 <div class="credit-card-number">
                     <label for="" class="body-med">卡片號碼：</label>
-                    <input type="text" class="body-med credit-card-number" placeholder="**** **** **** ****" maxlength="19">
+                    <div class="tpfield" id="card-number"></div>
                 </div>
                 <div class="expiration-date">
                     <label for="" class="body-med">過期時間：</label>
-                    <input type="text" class="body-med expiration-date" placeholder="MM/YY" maxlength="4">
+                    <div class="tpfield" id="card-expiration-date"></div>
                 </div>
                 <div class="card-verification-value">
                     <label for="" class="body-med">驗證密碼：</label>
-                    <input type="text" class="body-med card-verification-value" placeholder="CCV" maxlength="3">
+                    <div class="tpfield" id="card-ccv"></div>
                 </div>
             </section>
             <hr>
@@ -94,5 +94,7 @@
         </footer>
         <script src="{{url_for('static', filename = 'scripts/booking.js')}}"></script>
         <script type="module" src="{{url_for('static', filename = 'scripts/userAuthentication.js')}}"></script>
+        <script src="https://js.tappaysdk.com/sdk/tpdirect/v5.14.0"></script>
+        <script src="{{url_for('static', filename = 'scripts/tapPay.js')}}"></script>
     </body>
 </html>

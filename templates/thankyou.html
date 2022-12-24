@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE = edge">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename = 'styles/common.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename = 'styles/thankyou.css')}}">
+        <title>台北一日遊</title>
+    </head>
+    <body>
+        <div class="log-in-filter">
+            <div class="log-in-panel">
+                <div class="gradient"></div>
+                <img class="close-button" src="{{url_for('static', filename = 'images/icon_close.png')}}" alt="">
+                <h3 class="bold">登入會員帳號</h3>
+                <input class="body-med email-log-in" type="text" placeholder="輸入電子信箱">
+                <div class="password-input">
+                    <input class="body-med password-log-in" type="password" placeholder="輸入密碼">
+                    <img src="{{url_for('static', filename = 'images/icon_eye.png')}}" alt="" class="password-eye">
+                </div>
+                <button class="button log-in-button">登入帳戶</button>
+                <p class="body-med">還沒有帳戶？<span class="toggle-sign-up">點此註冊</span></p>
+            </div>
+            <div class="sign-up-panel">
+                <div class="gradient"></div>
+                <img class="close-button" src="{{url_for('static', filename = 'images/icon_close.png')}}" alt="">
+                <h3 class="bold">註冊會員帳號</h3>
+                <input class="body-med name-sign-up" type="text" placeholder="輸入姓名">
+                <input class="body-med email-sign-up" type="text" placeholder="輸入電子郵件">
+                <div class="password-input">
+                    <input class="body-med password-sign-up" type="password" placeholder="輸入密碼" >
+                    <img src="{{url_for('static', filename = 'images/icon_eye.png')}}" alt="" class="password-eye">
+                </div>
+                <button class="button sign-up-button">註冊新帳戶</button>
+                <p class="body-med">已經有帳戶了？<span class="toggle-log-in">點此登入</span></p>
+            </div>
+        </div>
+        <nav>
+            <div class="nav-container">
+                <h2>
+                    <a href="/">台北一日遊</a>
+                </h2>
+                <ul class="body-med">
+                    <li class="booking-page-button">預定行程</li>
+                    <li class="log-in-sign-up">登入/註冊</li>
+                </ul>
+            </div>
+        </nav>
+        <main>
+            <h3 class="bold">感謝您的購買，訂單已完成</h3>
+            <p class="content-bold order-number"></p>
+        </main>
+        <footer id="scroll-bottom-detector">
+            <p class="body-bold" >COPYRIGHT © 2021 台北一日遊</p>
+        </footer>
+        <script type="module" src="{{url_for('static', filename = 'scripts/userAuthentication.js')}}"></script>
+        <script src="{{url_for('static', filename = 'scripts/thankyou.js')}}"></script>
+    </body>
+</html>
