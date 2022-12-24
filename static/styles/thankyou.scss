@@ -1,0 +1,26 @@
+@import "./variables";
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3{
+            color: $primary-cyan-70;
+            margin: 50px 0 0 0;
+        }
+        p{
+            color: $secondary-gray-70;
+            margin: 30px 0;
+        }
+    }
+    footer{
+        flex-grow: 1;
+        align-items: flex-start;
+        padding-top: 45px;
+    }
+}
