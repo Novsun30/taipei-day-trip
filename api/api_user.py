@@ -1,13 +1,15 @@
 from flask import *
-import re, mysql.connector, mysql.connector.pooling, jwt
+import re, mysql.connector, mysql.connector.pooling, jwt, os
 from flask_bcrypt import Bcrypt
+from dotenv import load_dotenv
+load_dotenv()
 api_user = Blueprint("api_user", __name__)
-secret_key = "hello pyjwt"
+secret_key = os.getenv("JWT_KEY")
 bcrypt = Bcrypt()
 
 db_config = {
     "user": "root",
-    "password": "1234",
+    "password": os.getenv("DB_PASSWORD"),
     "host": "127.0.0.1",
     "database": "taipei_day_trip"
 }

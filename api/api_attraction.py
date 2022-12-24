@@ -1,10 +1,12 @@
 from flask import *
-import re, mysql.connector, mysql.connector.pooling
+import re, mysql.connector, mysql.connector.pooling, os
+from dotenv import load_dotenv
+load_dotenv()
 api_attraction = Blueprint("api_attraction", __name__)
 
 db_config = {
     "user": "root",
-    "password": "1234",
+    "password": os.getenv("DB_PASSWORD"),
     "host": "127.0.0.1",
     "database": "taipei_day_trip"
 }
