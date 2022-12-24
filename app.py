@@ -2,11 +2,13 @@ from flask import *
 from api.api_attraction import api_attraction
 from api.api_user import api_user
 from api.api_booking import api_booking
+from api.api_order import api_order
 
 app = Flask(__name__)
 app.register_blueprint(api_attraction)
 app.register_blueprint(api_user)
 app.register_blueprint(api_booking)
+app.register_blueprint(api_order)
 app.config["JSON_AS_ASCII"] = False
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 

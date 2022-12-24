@@ -1,30 +1,5 @@
 showBookingData();
-const creditCardNumberInput = document.querySelector("input.credit-card-number");
-creditCardNumberInput.addEventListener("input", numberSpaceOnlyInput);
-creditCardNumberInput.addEventListener("keydown", creditCardFormat);
-const expirationDateInput = document.querySelector("input.expiration-date");
-expirationDateInput.addEventListener("input", numberOnlyInput);
-const cardVerificationValueInput = document.querySelector("input.card-verification-value");
-cardVerificationValueInput.addEventListener("input", numberOnlyInput);
 
-function creditCardFormat(element){
-    const length = element.target.value.length
-    let key = element.key
-    if(key == " "){
-        element.preventDefault();
-    }
-    if((length == 4| length == 9 | length == 14 ) && key != "Backspace"){
-        element.target.value = element.target.value + " "
-    }
-}
-function numberSpaceOnlyInput(element){
-    const regex = /[^0-9 ]/g;
-    element.target.value = element.target.value.replace(regex, "")
-}
-function numberOnlyInput(element){
-    const regex = /[^0-9]/g;
-    element.target.value = element.target.value.replace(regex, "")
-}
 async function LogInAuthentication(){
     const response = await fetch("/api/user/auth");
     const data = await response.json();

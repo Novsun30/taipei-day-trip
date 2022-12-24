@@ -85,15 +85,20 @@ body{
         display: flex;
         flex-direction: column;
         width: 85%;
-        input{
-          padding: 10px;
-          width: 200px;
-          height: 38px;
-          border: solid 1px $secondary-gray-20;
-          border-radius: 5px;
-        }
+
         div{
           margin-bottom: 15px;
+          display: flex;
+          align-items: center;
+
+          .tpfield {
+            padding: 10px;
+            width: 200px;
+            height: 38px;
+            border: solid 1px $secondary-gray-20;
+            border-radius: 5px;
+            margin-bottom: 0;
+          }
         }
         p.credit-headline{
           margin-bottom: 24px;
@@ -117,6 +122,10 @@ body{
           color: $white;
           padding: 10px 20px 10px 20px;
           cursor: pointer;
+      }
+      p.payment-error{
+        color: $warning;
+        margin-top: 15px;
       }
     }
   }

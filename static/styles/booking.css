@@ -82,15 +82,18 @@ body main section.credit-card-data {
   flex-direction: column;
   width: 85%;
 }
-body main section.credit-card-data input {
+body main section.credit-card-data div {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+body main section.credit-card-data div .tpfield {
   padding: 10px;
   width: 200px;
   height: 38px;
   border: solid 1px #E8E8E8;
   border-radius: 5px;
-}
-body main section.credit-card-data div {
-  margin-bottom: 15px;
+  margin-bottom: 0;
 }
 body main section.credit-card-data p.credit-headline {
   margin-bottom: 24px;
@@ -114,6 +117,10 @@ body main div.payment button {
   color: #FFFFFF;
   padding: 10px 20px 10px 20px;
   cursor: pointer;
+}
+body main div.payment p.payment-error {
+  color: #FF3333;
+  margin-top: 15px;
 }
 
 @media screen and (max-width: 1200px) {
