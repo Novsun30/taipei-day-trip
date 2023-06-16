@@ -1,4 +1,13 @@
+logInChecker();
 showBookingData();
+
+async function logInChecker(){
+    const response = await fetch("/api/user/auth");
+    const data = await response.json();
+    if(data["data"] === null){
+        location.href = "/"
+    }
+}
 
 async function LogInAuthentication(){
     const response = await fetch("/api/user/auth");

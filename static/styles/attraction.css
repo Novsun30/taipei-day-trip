@@ -50,8 +50,7 @@ body main section.main-top div.images div.dot-container div.dot div.dot-indicato
 }
 body main section.main-top div.images div.dot-container div.dot:hover {
   background-color: #777;
-  -webkit-animation: 0.5s hover-filter;
-          animation: 0.5s hover-filter;
+  animation: 0.5s hover-filter;
 }
 body main section.main-top div.images button.left-arrow {
   top: 50%;
@@ -76,8 +75,7 @@ body main section.main-top div.images button.left-arrow img {
 body main section.main-top div.images button.left-arrow div.filter:hover {
   background-color: #333;
   opacity: 0.6;
-  -webkit-animation: 0.3s hover-filter;
-          animation: 0.3s hover-filter;
+  animation: 0.3s hover-filter;
 }
 body main section.main-top div.images button.right-arrow {
   top: 50%;
@@ -102,8 +100,7 @@ body main section.main-top div.images button.right-arrow div.filter {
 body main section.main-top div.images button.right-arrow div.filter:hover {
   background-color: #333;
   opacity: 0.6;
-  -webkit-animation: 0.3s hover-filter;
-          animation: 0.3s hover-filter;
+  animation: 0.3s hover-filter;
 }
 body main section.main-top div.images img {
   position: absolute;
@@ -115,8 +112,7 @@ body main section.main-top div.images img {
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-  -webkit-animation: 1.25s fade-in;
-          animation: 1.25s fade-in;
+  animation: 1.25s fade-in;
 }
 body main section.main-top div.info {
   display: flex;
@@ -270,29 +266,12 @@ body main section.main-bottom div.transport p.body-bold {
   height: 32px;
 }
 
-@-webkit-keyframes hover-filter {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.6;
-  }
-}
-
 @keyframes hover-filter {
   from {
     opacity: 0;
   }
   to {
     opacity: 0.6;
-  }
-}
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 @keyframes fade-in {

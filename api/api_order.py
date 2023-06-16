@@ -196,3 +196,28 @@ def api_order_get(orderNumber):
     finally:
         cursor.close()
         cnx.close()
+
+@api_order.route("/api/orders")
+def api_orders_get():
+    try:
+        cnx = cnx_pool.get_connection()
+        cursor = cnx.cursor(dictionary = True)
+        jwt_token = request.cookies.get("token")
+        try:
+            member_data = jwt.decode(jwt_token, secret_key, algorithms = "HS256")
+        except:
+            return {"error": True, "message": "未登入"}, 403
+        select_orders = """SELECT order_number, total_price, status, name, email, phone,
+        DATE_FORMAT(create_time, '%Y-%m-%d') AS create_time 
+        FROM `order`
+        WHERE member_id = %s"""
+        cursor.execute(select_orders, (member_data["id"],))
+        orders = cursor.fetchall()
+        result = {"data": orders}
+        return result
+        
+    except:
+        return {"error": True, "message": "伺服器發生錯誤"}, 500
+    finally:
+        cursor.close()
+        cnx.close()

@@ -183,7 +183,10 @@ async function bookingSubmit(){
         return;
     }
     const newDate = new Date();
-    const currentDate = `${newDate.getFullYear()}-${newDate.getMonth()+1}-${newDate.getDate()}`
+    const getYear = newDate.getFullYear();
+    const getMonth = (newDate.getMonth()+1).toString().padStart(2, "0");
+    const getDate =  newDate.getDate().toString().padStart(2, "0");
+    const currentDate = `${getYear}-${getMonth}-${getDate}`
     if(date <= currentDate){
         const newErrorMessage = document.createElement("p");
         const bookingDiv = document.querySelector("div.booking");
@@ -221,5 +224,5 @@ async function bookingSubmit(){
         bookingDiv.appendChild(newErrorMessage);
         return;
     }
-    window.location.href = "/booking"
+    location.href = "/booking"
 }
