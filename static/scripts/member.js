@@ -250,7 +250,10 @@ function showOrderBottom(){
     }
     this.children[1].style.display = "none";
     this.children[2].style.display = "none";
-    this.nextElementSibling.style.display = "none"
+
+    if(this.nextElementSibling.classList[0] === "trips"){
+        this.nextElementSibling.style.display = "none"
+    }
 }
 
 function previewUploadImg(){
