@@ -60,11 +60,27 @@ def api_user_post():
 @api_user.route("/api/user/auth")
 def api_user_auth_get():
     try:
+        cnx = cnx_pool.get_connection()
+        cursor = cnx.cursor(dictionary = True)
         jwt_token = request.cookies.get("token")
         data = jwt.decode(jwt_token, secret_key, algorithms = "HS256")
-        return jsonify({"data": {"id": data["id"], "name": data["name"], "email": data["email"]}})
+        select_member_data = "SELECT id, name, email, DATE_FORMAT(register_time, '%Y-%m-%d') AS date FROM member WHERE id = %s"
+        id = data["id"]
+        cursor.execute(select_member_data, (id,))
+        member_data = cursor.fetchone()
+        return jsonify({
+            "data": {
+                "id": member_data["id"], 
+                "name": member_data["name"], 
+                "email": member_data["email"],
+                "registerDate": member_data["date"]
+                }
+            })
     except:
         return jsonify({"data": None})
+    finally:
+        cursor.close()
+        cnx.close()
 
 @api_user.route("/api/user/auth", methods = ["PUT"])
 def api_user_auth_put():
@@ -79,7 +95,7 @@ def api_user_auth_put():
         #need to improve email authentication
         if  re.search("^[^@]+@[^@]+$", email) == None or re.search("[^a-zA-Z0-9]", password) != None:
            return jsonify({"error": True, "message": "無效的信箱或密碼"}), 400
-        login_check = "SELECT id, name, email, password FROM member WHERE email = %s"
+        login_check = "SELECT id, name, email, password, register_time FROM member WHERE email = %s"
         cursor.execute(login_check,(email,))
         result = cursor.fetchone()
         if result == None:
@@ -87,7 +103,12 @@ def api_user_auth_put():
         hash_password = result[3]
         if bcrypt.check_password_hash(hash_password, password) == False:
             return jsonify({"error": True, "message": "信箱或密碼錯誤"}), 400
-        encoded_jwt = jwt.encode({"id": result[0], "name": result[1], "email": result[2]}, secret_key, algorithm = "HS256")
+        encoded_jwt = jwt.encode({
+            "id": result[0],
+            "name": result[1],
+            "email": result[2]},
+            secret_key, 
+            algorithm = "HS256")
         auth_response = make_response(jsonify({"ok": True}))
         auth_response.set_cookie("token", encoded_jwt, max_age = 604800)
         return auth_response
@@ -102,3 +123,8 @@ def api_user_auth_delete():
     auth_response = make_response(jsonify({"ok": True}))
     auth_response.set_cookie("token", "", max_age = -1)
     return auth_response
+
+@api_user.route("/api/user/upload", methods = ["post"])
+def api_user_upload():
+    
+    return "123"

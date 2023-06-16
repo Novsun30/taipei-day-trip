@@ -11,17 +11,20 @@ async function getMemberData(){
    const response = await fetch("/api/user/auth");
    let data = await response.json();
    if (data["data"] != null){
-    logInSignUp.textContent = "登出系統";
+    logInSignUp.textContent = "會員中心";
     logInSignUp.removeEventListener("click", showLogInPanel);
-    logInSignUp.addEventListener("click", logOut);
+    logInSignUp.addEventListener("click", toMemberPage);
    }
 }
 async function logOut(){
     await fetch("/api/user/auth",{method: "DELETE"}).then(res=>res).then(data=>data);
     logInSignUp.textContent = "登入/註冊";
-    logInSignUp.removeEventListener("click", logOut);
+    logInSignUp.removeEventListener("click", toMemberPage);
     logInSignUp.addEventListener("click", showLogInPanel);
     location.reload();
+}
+function toMemberPage(){
+    location.href = "/member"
 }
 function togglePasswordDisplay(){
     const passwordSignUp = document.querySelector("input.password-sign-up");

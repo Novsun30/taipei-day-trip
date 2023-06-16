@@ -51,8 +51,7 @@ body section.hero div.search-bar-container div.search-bar button img {
 }
 body section.hero div.search-bar-container div.search-bar div.category-menu {
   position: absolute;
-  -webkit-animation: 0.4s fade-in;
-          animation: 0.4s fade-in;
+  animation: 0.4s fade-in;
   z-index: 1;
   bottom: -39px;
   display: flex;
@@ -152,17 +151,7 @@ body main section.main-content-container a div.filter {
 body main section.main-content-container a div.filter:hover {
   opacity: 0.4;
   background-color: #666666;
-  -webkit-animation: 0.5s hover-filter;
-          animation: 0.5s hover-filter;
-}
-
-@-webkit-keyframes hover-filter {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.4;
-  }
+  animation: 0.5s hover-filter;
 }
 
 @keyframes hover-filter {
@@ -171,14 +160,6 @@ body main section.main-content-container a div.filter:hover {
   }
   to {
     opacity: 0.4;
-  }
-}
-@-webkit-keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 @keyframes fade-in {
